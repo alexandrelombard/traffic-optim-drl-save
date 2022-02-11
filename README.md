@@ -57,8 +57,26 @@ lancé
 - les attributs flow indique le nombre de véhicules par heure passant dans une voie
 de l’intersection
 
+### Les algorithmes fonctionnels 
 
-###Pour créer de nouvelle stratégie 
+  Globalement les algorithmes qui convergent que nous utilisons sont :
+    
+    - sumo_ppo_baselines (mode 7) avec la classe class_sumo_env_new_approach.py
+    - sumo_sac_baselines (moede 11) avec la classe class_sumo_env_new_approach.py
+    - sumo_dqn_2.py (mode 2) avec la classe Environment_class_dqn.py
+   
+  Pour le sac une reward qui fonctionnent bien : 
+    -traci.simulation.getCollidingVehiclesNumber() * 1000 + traci.simulation.getArrivedNumber() * 100 + traci.simulation.getDepartedNumber() * 50 - traci.simulation.getMinExpectedNumber()
+   
+
+### Principe à retenir : 
+  
+  Un fichier une heuristique et on peut s'inspirer des stratégies déjà implémenté et de la classe abstract contenant les méthodes essentielles. 
+  
+  
+  
+
+### Pour créer de nouvelle stratégie 
 
 Si vous souhaitez créer une nouvelle heuristique, vous devez créer un nouveau fichier dans le module de l'approche souhaitée. 
 Dans ce fichier, vous devez définir les différentes fonctions nécessaires à la mise en place de votre heuristique. 
