@@ -1,0 +1,24 @@
+<additional>
+
+<!--  <vType id="t0" accel="0.8" decel="4.5" sigma="0.5" length="5" maxSpeed="70"/>-->
+
+<!--  <calibrator id="cali1" edge="1to2" pos="0" output="NULL" jamThreshold="0.1">-->
+<!--    <flow begin="0"    end="1020" route="routedist1" vehsPerHour="300" speed="27.8" type="t0" departPos="free" departSpeed="max"/>-->
+<!--  </calibrator>-->
+
+<!--  <calibrator id="cali2" edge="5to2" pos="0" output="NULL" jamThreshold="0.1">-->
+<!--    <flow begin="0"    end="1020" route="routedist2" vehsPerHour="300" speed="27.8" type="t0" departPos="free" departSpeed="max"/>-->
+<!--  </calibrator>-->
+
+<!--  <calibrator id="cali3" edge="3to2" pos="0" output="NULL" jamThreshold="0.1">-->
+<!--    <flow begin="0"    end="1020" route="routedist3" vehsPerHour="302" speed="27.8" type="t0" departPos="free" departSpeed="max"/>-->
+<!--  </calibrator>-->
+
+<!--  <calibrator id="cali4" edge="4to2" pos="0" output="NULL" jamThreshold="0.1">-->
+<!--    <flow begin="0"    end="1020" route="routedist4" vehsPerHour="302" speed="27.8" type="t0" departPos="free" departSpeed="max"/>-->
+<!--  </calibrator>-->
+
+
+
+
+</additional>
