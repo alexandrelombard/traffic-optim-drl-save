@@ -1,0 +1,3 @@
+import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.safety_simulation_function as sfty
+
+sfty.security_distance_matrice_construct()

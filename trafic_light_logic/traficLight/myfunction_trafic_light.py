@@ -7,7 +7,7 @@ import os
 import sys
 import numpy as np
 import matplotlib.pyplot
-from Tools import statistique
+from tools import statistics
 
 # we need to import python modules from the $SUMO_HOME/tools directory
 if 'SUMO_HOME' in os.environ:
