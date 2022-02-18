@@ -1,7 +1,7 @@
-import project
-
 from __future__ import absolute_import
 from __future__ import print_function
+
+import project
 
 import os
 import sys
