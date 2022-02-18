@@ -1,3 +1,5 @@
+import project
+
 from __future__ import absolute_import
 from __future__ import print_function
 
@@ -38,8 +40,8 @@ def start_simulation(display):
         sumo = 'sumo'
 
     sumo_binary = checkBinary(sumo)
-    traci.start([sumo_binary, "-c", "Net/NetworkNoTraficLight.sumocfg",
-                 "--tripinfo-output", "tripinfo.xml", "--random", "--collision.check-junctions"])
+    traci.start([sumo_binary, "-c", project.resources_dir + "Net/NetworkNoTraficLight.sumocfg",
+                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
 
 
 def reset(display):
@@ -62,8 +64,8 @@ def reset(display):
     else:
         sumo = 'sumo'
     sumo_binary = checkBinary(sumo)
-    traci.start([sumo_binary, "-c", "Net/NetworkNoTraficLight.sumocfg",
-                 "--tripinfo-output", "tripinfo.xml", "--random"])
+    traci.start([sumo_binary, "-c", project.resources_dir + "Net/NetworkNoTraficLight.sumocfg",
+                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random"])
 
     n = 40
     return np.zeros((n, n, 3), dtype=int)

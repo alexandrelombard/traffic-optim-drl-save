@@ -1,3 +1,5 @@
+import project
+
 import numpy as np
 import traci
 
@@ -26,8 +28,8 @@ def start_simulation(display):
     else:
         sumo = 'sumo'
     sumo_binary = checkBinary(sumo)
-    traci.start([sumo_binary, "-c", "Net/NetworkNoTraficLight.sumocfg",
-                 "--tripinfo-output", "tripinfo.xml", "--random", "--collision.check-junctions"])
+    traci.start([sumo_binary, "-c", project.resources_dir + "Net/NetworkNoTraficLight.sumocfg",
+                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
 
 
 
@@ -51,8 +53,8 @@ def reset(display):
     else:
         sumo = 'sumo'
     sumo_binary = checkBinary(sumo)
-    traci.start([sumo_binary, "-c", "Net/NetworkNoTraficLight.sumocfg",
-                 "--tripinfo-output", "tripinfo.xml", "--random", "--collision.check-junctions"])
+    traci.start([sumo_binary, "-c", project.resources_dir + "Net/NetworkNoTraficLight.sumocfg",
+                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
     # runningVehicleID = traci.vehicle.getIDList()
     # countRunningVehicle = traci.vehicle.getIDCount()
     # return imageConstruct(runningVehicleID, runningVehicleID, 40)
@@ -124,7 +126,7 @@ def observation_maker(list_flow, obs_new_approach, entry_array):
 
 
 def observation_new_approach(list_sorted_leader):
-    entry_array = np.load('variable_CAC/entry_array.npy')
+    entry_array = np.load(project.resources_dir + 'variable_CAC/entry_array.npy')
     obs_new_approach = [] #np.zeros((212,))
     flow_edges = ["1to2", "5to2", "3to2", "4to2"]
 

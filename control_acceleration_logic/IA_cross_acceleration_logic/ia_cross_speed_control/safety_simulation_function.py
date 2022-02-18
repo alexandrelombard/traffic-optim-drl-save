@@ -4,14 +4,16 @@
     the security_matrice.
 """
 
+import project
+
 import control_acceleration_logic.IA_cross_acceleration_logic.ia_cross_speed_control.ia_step_runner as fct
 import traci
 import numpy as np
 
 # variable or constante that we need in other module to run safely the simulation.
-security_matrice = np.load('variable_CAC/security_matrice.npy')
-entry_array = np.load('variable_CAC/entry_array.npy')
-security_distance_matrice = np.load('variable_CAC/security_distance_matrice.npy')
+security_matrice = np.load(project.resources_dir + 'variable_CAC/security_matrice.npy')
+entry_array = np.load(project.resources_dir + 'variable_CAC/entry_array.npy')
+security_distance_matrice = np.load(project.resources_dir + 'variable_CAC/security_distance_matrice.npy')
 
 
 def security_set_speed_mode():

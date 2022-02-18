@@ -1,3 +1,5 @@
+import project
+
 from __future__ import absolute_import
 from __future__ import print_function
 
@@ -36,8 +38,8 @@ def start_simulation(display):
     else:
         sumo = 'sumo'
     sumo_binary = checkBinary(sumo)
-    traci.start([sumo_binary, "-c", "traficLightNet_cycle/NetworkNoTraficLight.sumocfg",
-                 "--tripinfo-output", "tripinfo.xml", "--random", "--collision.check-junctions"])
+    traci.start([sumo_binary, "-c", project.resources_dir + "traficLightNet_cycle/NetworkNoTraficLight.sumocfg",
+                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
 
 
 def reset(display):
@@ -60,8 +62,8 @@ def reset(display):
     else:
         sumo = 'sumo'
     sumo_binary = checkBinary(sumo)
-    traci.start([sumo_binary, "-c", "traficLightNet_cycle/NetworkNoTraficLight.sumocfg",
-                 "--tripinfo-output", "tripinfo.xml", "--random", "--collision.check-junctions"])
+    traci.start([sumo_binary, "-c", project.resources_dir + "traficLightNet_cycle/NetworkNoTraficLight.sumocfg",
+                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
     # runningVehicleID = traci.vehicle.getIDList()
     # countRunningVehicle = traci.vehicle.getIDCount()
     # return imageConstruct(runningVehicleID, runningVehicleID, 40)

@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+import project
+
 import os
 
 import sys
@@ -38,8 +40,8 @@ class ROWStrategy(ABC):
             sumo = 'sumo'
 
         sumo_binary = checkBinary(sumo)
-        traci.start([sumo_binary, "-c", "Net/NetworkNoTraficLight.sumocfg",
-                     "--tripinfo-output", "tripinfo.xml", "--random", "--collision.check-junctions"])
+        traci.start([sumo_binary, "-c", project.resources_dir + "Net/NetworkNoTraficLight.sumocfg",
+                     "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
 
     @abstractmethod
     def reset(self):
