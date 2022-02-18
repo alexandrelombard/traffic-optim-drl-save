@@ -1,13 +1,14 @@
 from __future__ import absolute_import
 from __future__ import print_function
 
-import project
-
 import os
 import sys
+
 import numpy as np
-from tools import statistics
-import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.safety_simulation_function as safety_function
+
+import \
+    control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.safety_simulation_function as safety_function
+import project
 
 # we need to import python modules from the $SUMO_HOME/tools directory
 if 'SUMO_HOME' in os.environ:
@@ -18,7 +19,6 @@ else:
 
 from sumolib import checkBinary  # noqa
 import traci  # noqa
-
 
 # constante :
 delta_s = 2
@@ -48,7 +48,8 @@ def start_simulation(display):
         sumo = 'sumo'
     sumo_binary = checkBinary(sumo)
     traci.start([sumo_binary, "-c", project.resources_dir + "Net/NetworkNoTraficLight.sumocfg",
-                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
+                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random",
+                 "--collision.check-junctions"])
 
 
 def reset(display):
@@ -72,7 +73,8 @@ def reset(display):
         sumo = 'sumo'
     sumo_binary = checkBinary(sumo)
     traci.start([sumo_binary, "-c", project.resources_dir + "Net/NetworkNoTraficLight.sumocfg",
-                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
+                 "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random",
+                 "--collision.check-junctions"])
     # runningVehicleID = traci.vehicle.getIDList()
     # countRunningVehicle = traci.vehicle.getIDCount()
     # return imageConstruct(runningVehicleID, runningVehicleID, 40)
@@ -546,8 +548,9 @@ def step_few(simulation_time, action, image_size):
     # else:
     #     speed_penalty = 2
 
-    reward = -(traci.simulation.getCollidingVehiclesNumber()*1000) + statistique.vitesseMoyenne(flow_edges) + \
-             (traci.simulation.getArrivedNumber()*10) + traci.simulation.getDepartedNumber() * 100 # + (detect_danger_reward(leader)/10)
+    reward = -(traci.simulation.getCollidingVehiclesNumber() * 1000) + statistique.vitesseMoyenne(flow_edges) + \
+             (
+                         traci.simulation.getArrivedNumber() * 10) + traci.simulation.getDepartedNumber() * 100  # + (detect_danger_reward(leader)/10)
 
     if traci.simulation.getTime() > simulation_time:
         done = True

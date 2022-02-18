@@ -1,40 +1,30 @@
 from __future__ import absolute_import
 from __future__ import print_function
 
-import project
-
 import os
 import sys
-from tools import statistics
-import right_of_way_logic.heuristic_strategies.first_in_first_out.cross_first_in_first_out as crossFirstInFirstOff
-
-
-import trafic_light_logic.traficLight.sumo_dqn_trafic_light as sumo_dqn_light
-import trafic_light_logic.traficLight.sumo_dqn_with_trained_model_trafic_light as sumo_trained_light
-
-from trafic_light_logic.trafic_light_optimal_cycle import trafic_light_optimal_cycle as tf_cycle_opti
-
-import right_of_way_logic.ai_right_of_way_logic.noTraficLight.sumo_dqn_2 as sumo_dqn_2
-import right_of_way_logic.ai_right_of_way_logic.noTraficLight.sumo_dqn_with_trained_model_2 as sumo_dqn_trained_2
-
-import right_of_way_logic.ai_right_of_way_logic.IAsimpleCross.sumo_dqn_simple as sumo_dqn_simple
-import right_of_way_logic.ai_right_of_way_logic.IAsimpleCross.sumo_dqn_with_trained_model_simple as sumo_dqn_trained_simple
-
-import right_of_way_logic.heuristic_strategies.fisrt_come_first_served.first_come_first_served_strict as fcfs
-
-import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.sumo_ppo_baselines as sumo_ppo_baselines
-
-import control_acceleration_logic.cross_acceleration_control.step_runner as acceleration_control_idm
-
-import control_acceleration_logic.cross_acceleration_control.step_runner2 as acceleration_control_idm2
-
-import right_of_way_logic.heuristic_strategies.dcp.dcp_step_method as dcp
-
-import right_of_way_logic.ai_right_of_way_logic.noTraficLight.myfunction as mfct
-
-import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.sumo_sac_baselines as sac
 
 import keras
+
+import \
+    control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.sumo_ppo_baselines as sumo_ppo_baselines
+import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.sumo_sac_baselines as sac
+import control_acceleration_logic.cross_acceleration_control.step_runner as acceleration_control_idm
+import control_acceleration_logic.cross_acceleration_control.step_runner2 as acceleration_control_idm2
+import project
+import right_of_way_logic.ai_right_of_way_logic.IAsimpleCross.sumo_dqn_simple as sumo_dqn_simple
+import \
+    right_of_way_logic.ai_right_of_way_logic.IAsimpleCross.sumo_dqn_with_trained_model_simple as sumo_dqn_trained_simple
+import right_of_way_logic.ai_right_of_way_logic.noTraficLight.myfunction as mfct
+import right_of_way_logic.ai_right_of_way_logic.noTraficLight.sumo_dqn_2 as sumo_dqn_2
+import right_of_way_logic.ai_right_of_way_logic.noTraficLight.sumo_dqn_with_trained_model_2 as sumo_dqn_trained_2
+import right_of_way_logic.heuristic_strategies.dcp.dcp_step_method as dcp
+import right_of_way_logic.heuristic_strategies.first_in_first_out.cross_first_in_first_out as crossFirstInFirstOff
+import right_of_way_logic.heuristic_strategies.fisrt_come_first_served.first_come_first_served_strict as fcfs
+import trafic_light_logic.traficLight.sumo_dqn_trafic_light as sumo_dqn_light
+import trafic_light_logic.traficLight.sumo_dqn_with_trained_model_trafic_light as sumo_trained_light
+from tools import statistics
+from trafic_light_logic.trafic_light_optimal_cycle import trafic_light_optimal_cycle as tf_cycle_opti
 
 # we need to import python modules from the $SUMO_HOME/tools directory
 if 'SUMO_HOME' in os.environ:
@@ -92,6 +82,7 @@ class Environment:
 
     This function launch the simulation with the parameters of the class
     """
+
     def launch_simulation(self):
 
         if self.mode == 1:
@@ -100,7 +91,6 @@ class Environment:
 
         if self.mode == 2:
             if self.training:
-
                 sumo_dqn_2.deep_learning(self.display, self.simulation_time, self.image_size, self.reward_type,
                                          self.coef, self.flow1, self.flow2, self.flow3, self.flow4)
 
@@ -158,7 +148,6 @@ class Environment:
             if not self.training:
                 sac.launch_sac_model(self.display, self.simulation_time, self.image_size)
 
-
     def simulation_benchmark(self, display, nb_episode, time_per_episode, reward_type, flow1, flow2, flow3, flow4):
 
         list_stat_fifo = []
@@ -173,7 +162,8 @@ class Environment:
         list_stat_fcfs_quart = []
         list_stat_dcp_quart = []
 
-        dqn_method = mfct.Step_runner_Dqn(keras.models.load_model(project.models_dir + 'save_model'), 50, "waiting_time", 100, security= True)
+        dqn_method = mfct.Step_runner_Dqn(keras.models.load_model(project.models_dir + 'save_model'), 50,
+                                          "waiting_time", 100, security=True)
 
         tf_method = tf_cycle_opti.Step_runner_tf(reward_type, 100)
 
@@ -182,43 +172,46 @@ class Environment:
         dcp_method = dcp.Step_runner_dcp([])
 
         for i in range(1, 8):
-
             # list_stat_fifo.append(crossFirstInFirstOff.launch_simulation_statistique(display, nb_episode,
             #                                                                          time_per_episode,
             #                                                                          reward_type, flow1*i, flow2*i,
             #                                                                          flow3*i, flow4*i))
 
-            list_stat_fifo.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-            list_stat_fifo_quart.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+            list_stat_fifo.append(
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                 0, 0, 0, 0])
+            list_stat_fifo_quart.append(
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                 0, 0, 0, 0])
 
             list_1, list_dqn_seuil = statistics.launch_statistique(display, nb_episode,
-                                                                    time_per_episode,
-                                                                    flow1 * i, flow2 * i,
-                                                                    flow3 * i, flow4 * i, dqn_method)
+                                                                   time_per_episode,
+                                                                   flow1 * i, flow2 * i,
+                                                                   flow3 * i, flow4 * i, dqn_method)
 
             list_stat_dqn_2.append(list_1)
             list_stat_dqn_2_quart.append(list_dqn_seuil)
 
             list_1, list_tf_seuil = statistics.launch_statistique(display, nb_episode,
-                                                                   time_per_episode,
-                                                                   flow1 * i, flow2 * i,
-                                                                   flow3 * i, flow4 * i, tf_method)
+                                                                  time_per_episode,
+                                                                  flow1 * i, flow2 * i,
+                                                                  flow3 * i, flow4 * i, tf_method)
 
             list_stat_tf_opti_cycle.append(list_1)
             list_stat_tf_opti_cycle_quart.append(list_tf_seuil)
 
             list_1, list_fcfs_seuil = statistics.launch_statistique(display, nb_episode,
-                                                                     time_per_episode,
-                                                                     flow1 * i, flow2 * i,
-                                                                     flow3 * i, flow4 * i, fcfs_method)
+                                                                    time_per_episode,
+                                                                    flow1 * i, flow2 * i,
+                                                                    flow3 * i, flow4 * i, fcfs_method)
 
             list_stat_fcfs.append(list_1)
             list_stat_fcfs_quart.append(list_fcfs_seuil)
 
             list_1, list_dcp_seuil = statistics.launch_statistique(display, nb_episode,
-                                                                    time_per_episode,
-                                                                    flow1 * i, flow2 * i,
-                                                                    flow3 * i, flow4 * i, dcp_method)
+                                                                   time_per_episode,
+                                                                   flow1 * i, flow2 * i,
+                                                                   flow3 * i, flow4 * i, dcp_method)
 
             list_stat_dcp.append(list_1)
             list_stat_dcp_quart.append(list_dcp_seuil)
@@ -252,11 +245,10 @@ class Environment:
         statistics.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "fcfs", list_stat_fcfs_quart)
         statistics.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "dcp", list_stat_dcp_quart)
 
-
-
-    def statistic_printer(self,method_name, list_stat, index):
+    def statistic_printer(self, method_name, list_stat, index):
         print("\n\n")
-        print("Voici la moyenne des statisques pour le "+method_name, list_stat[index][0], "episode avec des flow de :",
+        print("Voici la moyenne des statisques pour le " + method_name, list_stat[index][0],
+              "episode avec des flow de :",
               list_stat[index][12], "vehicule par heure.")
 
         print("nombre de collision : ", list_stat[index][1])
@@ -267,10 +259,9 @@ class Environment:
         print("evacuated vehicle average : ", list_stat[index][10])
 
 
-
-
 instance = Environment(mode=1, display=True, training=True, simulation_time=1000, image_size=50,
                        reward_type="mix_vehicle_time", coef=10, flow1=500, flow2=500, flow3=500, flow4=500)
 #
 # instance.launch_simulation()
-instance.simulation_benchmark(display=False, nb_episode=6, time_per_episode=1000, reward_type="waiting_time", flow1=100, flow2=100, flow3=100, flow4=100)
+instance.simulation_benchmark(display=False, nb_episode=6, time_per_episode=1000, reward_type="waiting_time", flow1=100,
+                              flow2=100, flow3=100, flow4=100)

@@ -1,10 +1,8 @@
+import os
+import sys
 from abc import ABC, abstractmethod
 
 import project
-
-import os
-
-import sys
 
 if 'SUMO_HOME' in os.environ:
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
@@ -14,6 +12,7 @@ else:
 
 from sumolib import checkBinary  # noqa
 import traci  # noqa
+
 
 class ROWStrategy(ABC):
     @property
@@ -41,7 +40,8 @@ class ROWStrategy(ABC):
 
         sumo_binary = checkBinary(sumo)
         traci.start([sumo_binary, "-c", project.resources_dir + "Net/NetworkNoTraficLight.sumocfg",
-                     "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random", "--collision.check-junctions"])
+                     "--tripinfo-output", project.resources_dir + "tripinfo.xml", "--random",
+                     "--collision.check-junctions"])
 
     @abstractmethod
     def reset(self):
