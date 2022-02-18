@@ -247,12 +247,8 @@ def launch_statistique(display, nb_episode, time_per_episode, flow1, flow2, flow
         while not done:
             step_count += 1
 
-
-
             done, average_waiting_time, cumulated_waiting_time, emission_co2, average_speed, evacuated_vehicle, collision = \
                 class_methode.run_step_simulation(time_per_episode)
-
-
 
             episode_cumulated_waiting_time += cumulated_waiting_time
             episode_emission_co2 += emission_co2
@@ -260,7 +256,6 @@ def launch_statistique(display, nb_episode, time_per_episode, flow1, flow2, flow
             episode_average_waiting_time += average_waiting_time
             episode_evacuated_vehicle += evacuated_vehicle
             episode_nb_collision += collision
-
 
         average_episode_cumulated_waiting_time += episode_cumulated_waiting_time/step_count
         average_episode_emission_co2 += episode_emission_co2/step_count
