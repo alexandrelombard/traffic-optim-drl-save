@@ -1,6 +1,7 @@
-
 from __future__ import absolute_import
 from __future__ import print_function
+
+import project
 
 import os
 import sys
@@ -172,13 +173,13 @@ class Environment:
         list_stat_fcfs_quart = []
         list_stat_dcp_quart = []
 
-        dqn_methode = mfct.Step_runner_Dqn(keras.models.load_model('./save_model'), 50, "waiting_time", 100, security= True)
+        dqn_method = mfct.Step_runner_Dqn(keras.models.load_model(project.models_dir + 'save_model'), 50, "waiting_time", 100, security= True)
 
-        tf_methode = tf_cycle_opti.Step_runner_tf(reward_type, 100)
+        tf_method = tf_cycle_opti.Step_runner_tf(reward_type, 100)
 
-        fcfs_methode = fcfs.Step_runner_fcfs([])
+        fcfs_method = fcfs.Step_runner_fcfs([])
 
-        dcp_methode = dcp.Step_runner_dcp([])
+        dcp_method = dcp.Step_runner_dcp([])
 
         for i in range(1, 8):
 
@@ -190,34 +191,34 @@ class Environment:
             list_stat_fifo.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
             list_stat_fifo_quart.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-            list_1, list_dqn_seuil = statistique.launch_statistique(display, nb_episode,
+            list_1, list_dqn_seuil = statistics.launch_statistique(display, nb_episode,
                                                                     time_per_episode,
                                                                     flow1 * i, flow2 * i,
-                                                                    flow3 * i, flow4 * i, dqn_methode)
+                                                                    flow3 * i, flow4 * i, dqn_method)
 
             list_stat_dqn_2.append(list_1)
             list_stat_dqn_2_quart.append(list_dqn_seuil)
 
-            list_1, list_tf_seuil = statistique.launch_statistique(display, nb_episode,
+            list_1, list_tf_seuil = statistics.launch_statistique(display, nb_episode,
                                                                    time_per_episode,
                                                                    flow1 * i, flow2 * i,
-                                                                   flow3 * i, flow4 * i, tf_methode)
+                                                                   flow3 * i, flow4 * i, tf_method)
 
             list_stat_tf_opti_cycle.append(list_1)
             list_stat_tf_opti_cycle_quart.append(list_tf_seuil)
 
-            list_1, list_fcfs_seuil = statistique.launch_statistique(display, nb_episode,
+            list_1, list_fcfs_seuil = statistics.launch_statistique(display, nb_episode,
                                                                      time_per_episode,
                                                                      flow1 * i, flow2 * i,
-                                                                     flow3 * i, flow4 * i, fcfs_methode)
+                                                                     flow3 * i, flow4 * i, fcfs_method)
 
             list_stat_fcfs.append(list_1)
             list_stat_fcfs_quart.append(list_fcfs_seuil)
 
-            list_1, list_dcp_seuil = statistique.launch_statistique(display, nb_episode,
+            list_1, list_dcp_seuil = statistics.launch_statistique(display, nb_episode,
                                                                     time_per_episode,
                                                                     flow1 * i, flow2 * i,
-                                                                    flow3 * i, flow4 * i, dcp_methode)
+                                                                    flow3 * i, flow4 * i, dcp_method)
 
             list_stat_dcp.append(list_1)
             list_stat_dcp_quart.append(list_dcp_seuil)
@@ -237,19 +238,19 @@ class Environment:
         # statistique.benchmark_csv_maker("benchmark", list_stat_fifo, list_stat_dqn_2, list_stat_tf_opti_cycle, list_stat_fcfs, list_stat_dcp)
         # statistique.benchmark_csv_maker("benchmark_without_q1q2", list_stat_fifo_quart, list_stat_dqn_2_quart, list_stat_tf_opti_cycle_quart, list_stat_fcfs_quart, list_stat_dcp_quart)
         #
-        statistique.benchmark_csv_init("benchmark.csv")
-        statistique.benchmark_csv_line_writer("benchmark.csv", "fifo", list_stat_fifo)
-        statistique.benchmark_csv_line_writer("benchmark.csv", "dqn", list_stat_dqn_2)
-        statistique.benchmark_csv_line_writer("benchmark.csv", "Feu", list_stat_tf_opti_cycle)
-        statistique.benchmark_csv_line_writer("benchmark.csv", "fcfs", list_stat_fcfs)
-        statistique.benchmark_csv_line_writer("benchmark.csv", "dcp", list_stat_dcp)
+        statistics.benchmark_csv_init("benchmark.csv")
+        statistics.benchmark_csv_line_writer("benchmark.csv", "fifo", list_stat_fifo)
+        statistics.benchmark_csv_line_writer("benchmark.csv", "dqn", list_stat_dqn_2)
+        statistics.benchmark_csv_line_writer("benchmark.csv", "Feu", list_stat_tf_opti_cycle)
+        statistics.benchmark_csv_line_writer("benchmark.csv", "fcfs", list_stat_fcfs)
+        statistics.benchmark_csv_line_writer("benchmark.csv", "dcp", list_stat_dcp)
 
-        statistique.benchmark_csv_init("benchmark_without_q1q3.csv")
-        statistique.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "fifo", list_stat_fifo_quart)
-        statistique.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "dqn", list_stat_dqn_2_quart)
-        statistique.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "Feu", list_stat_tf_opti_cycle_quart)
-        statistique.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "fcfs", list_stat_fcfs_quart)
-        statistique.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "dcp", list_stat_dcp_quart)
+        statistics.benchmark_csv_init("benchmark_without_q1q3.csv")
+        statistics.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "fifo", list_stat_fifo_quart)
+        statistics.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "dqn", list_stat_dqn_2_quart)
+        statistics.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "Feu", list_stat_tf_opti_cycle_quart)
+        statistics.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "fcfs", list_stat_fcfs_quart)
+        statistics.benchmark_csv_line_writer("benchmark_without_q1q3.csv", "dcp", list_stat_dcp_quart)
 
 
 
