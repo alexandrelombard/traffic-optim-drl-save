@@ -1,11 +1,11 @@
 # Package d'optimization de trafic 
 
-L'objectif de ce package est de pouvoir facilement imlémenter, tester et comparer de nouvelle stratégie de pilotage d'intersection.
+L'objectif de ce package est de pouvoir facilement implémenter, tester et comparer de nouvelle stratégie de pilotage d'intersection.
 L'objectif générale de ce package est donc de trouver des solutions afin d'optimiser les flux et ainsi de gagner en efficacité.  
 
 Ce package s'utilise avec sumo qui est un simulateur de trafic routier multi-étage open source permettant de realiser toute sorte de simulation.
 
-Les stratégies implémentés pour le moment sont dédiées au cas de l'intersection.
+Les stratégies implémentées pour le moment sont dédiées au cas de l'intersection.
 Pour le cas de l'intersection il y a 2 type de stratégie à considerer dans ce package: 
   - Les stratégies se basant sur une logique de droit de passage (un vehicule ne passe l'intersection que si on lui donne l'autorisation).
   - Les stratégies se basant sur le contrôle de la vitesse et de l'accéleration du véhicule. 
