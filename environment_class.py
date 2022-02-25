@@ -26,15 +26,7 @@ import trafic_light_logic.traficLight.sumo_dqn_with_trained_model_trafic_light a
 from tools import statistics
 from trafic_light_logic.trafic_light_optimal_cycle import trafic_light_optimal_cycle as tf_cycle_opti
 
-# we need to import python modules from the $SUMO_HOME/tools directory
-if 'SUMO_HOME' in os.environ:
-    tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
-    sys.path.append(tools)
-else:
-    sys.exit("please declare environment variable 'SUMO_HOME'")
-
-from sumolib import checkBinary  # noqa
-import traci  # noqa
+import sumo_utils # noqa
 
 """Class environment .
 

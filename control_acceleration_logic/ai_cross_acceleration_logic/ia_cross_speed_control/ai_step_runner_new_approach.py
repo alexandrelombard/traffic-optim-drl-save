@@ -2,21 +2,9 @@ import project
 
 import numpy as np
 
-import os
-import sys
-
-# we need to import python modules from the $SUMO_HOME/tools directory
-if 'SUMO_HOME' in os.environ:
-    tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
-    sys.path.append(tools)
-else:
-    sys.exit("please declare environment variable 'SUMO_HOME'")
-
-import traci
+import sumo_utils # noqa
 
 import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.ai_step_runner as fct_ia_step_runner
-from sumolib import checkBinary
-
 from tools import statistics
 
 

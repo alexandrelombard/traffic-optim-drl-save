@@ -10,15 +10,8 @@ import matplotlib.pyplot
 import tensorflow as tf
 from tools import simulation_parameter_tools as simu_tools, statistics
 
-# we need to import python modules from the $SUMO_HOME/tools directory
-if 'SUMO_HOME' in os.environ:
-    tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
-    sys.path.append(tools)
-else:
-    sys.exit("please declare environment variable 'SUMO_HOME'")
+import sumo_utils # noqa
 
-from sumolib import checkBinary  # noqa
-import traci  # noqa
 security_matrice = np.load(project.resources_dir + 'variable_ICGV2/security_matrice.npy')
 entry_array = np.load(project.resources_dir + 'variable_ICGV2/entry_array.npy')
 

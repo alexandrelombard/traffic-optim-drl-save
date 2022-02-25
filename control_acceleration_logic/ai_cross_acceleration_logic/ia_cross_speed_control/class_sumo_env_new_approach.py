@@ -2,7 +2,8 @@ import numpy as np
 import gym
 from gym import spaces
 import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.ai_step_runner_new_approach as function_env
-import traci
+
+import sumo_utils # noqa
 
 
 class SumoAccelEnv(gym.Env):

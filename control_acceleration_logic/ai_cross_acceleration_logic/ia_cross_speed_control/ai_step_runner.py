@@ -1,24 +1,13 @@
 from __future__ import absolute_import
 from __future__ import print_function
 
-import os
-import sys
-
 import numpy as np
 
 import \
     control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.safety_simulation_function as safety_function
 import project
 
-# we need to import python modules from the $SUMO_HOME/tools directory
-if 'SUMO_HOME' in os.environ:
-    tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
-    sys.path.append(tools)
-else:
-    sys.exit("please declare environment variable 'SUMO_HOME'")
-
-from sumolib import checkBinary  # noqa
-import traci  # noqa
+import sumo_utils # noqa
 
 # constante :
 delta_s = 2
