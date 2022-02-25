@@ -247,16 +247,16 @@ class Environment:
 
     def statistic_printer(self, method_name, list_stat, index):
         print("\n\n")
-        print("Voici la moyenne des statisques pour le " + method_name, list_stat[index][0],
-              "episode avec des flow de :",
-              list_stat[index][12], "vehicule par heure.")
+        print("Averaged statistics for " + method_name, list_stat[index][0],
+              "Episode with flows of: ",
+              list_stat[index][12], " vehicles per hour.")
 
-        print("nombre de collision : ", list_stat[index][1])
-        print("temp d'attente moyen : ", list_stat[index][2])
-        print("temps d'attente cumulé :", list_stat[index][4])
-        print("vitesse moyenne :", list_stat[index][6])
-        print("emission de co2 moyenne :", list_stat[index][8])
-        print("evacuated vehicle average : ", list_stat[index][10])
+        print("Number of collisions: ", list_stat[index][1])
+        print("Average waiting time: ", list_stat[index][2])
+        print("Cumulative waiting time: ", list_stat[index][4])
+        print("Average speed: ", list_stat[index][6])
+        print("Average CO2 emissions: ", list_stat[index][8])
+        print("Average number of evacuated vehicles: ", list_stat[index][10])
 
 
 instance = Environment(mode=1, display=True, training=True, simulation_time=1000, image_size=50,
