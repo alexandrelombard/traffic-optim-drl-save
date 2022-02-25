@@ -1,6 +1,6 @@
 import random
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.ai_step_runner as env
 import numpy as np

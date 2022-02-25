@@ -2,7 +2,7 @@ import project
 
 import numpy as np
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.ai_step_runner as fct_ia_step_runner
 from tools import statistics

@@ -3,12 +3,10 @@ from __future__ import print_function
 
 import project
 
-import os
-import sys
 from random import *
 import numpy as np
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 # parameters used by the model which control the acceleration of the vehicles:
 delta_s = 2

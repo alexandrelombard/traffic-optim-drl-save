@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 import project
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 
 class ROWStrategy(ABC):

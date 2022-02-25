@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot
 from tools import statistics
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 
 def start_simulation(display):

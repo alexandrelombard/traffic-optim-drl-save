@@ -3,7 +3,7 @@ import gym
 from gym import spaces
 import control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.ai_step_runner as function_env
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 
 class SumoAccelEnv(gym.Env):

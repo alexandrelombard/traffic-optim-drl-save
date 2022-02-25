@@ -7,7 +7,7 @@ import \
     control_acceleration_logic.ai_cross_acceleration_logic.ia_cross_speed_control.safety_simulation_function as safety_function
 import project
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 # constante :
 delta_s = 2

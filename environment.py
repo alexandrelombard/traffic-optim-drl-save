@@ -1,9 +1,6 @@
 from __future__ import absolute_import
 from __future__ import print_function
 
-import os
-import sys
-
 import keras
 
 import \
@@ -21,35 +18,36 @@ import right_of_way_logic.ai_right_of_way_logic.noTraficLight.sumo_dqn_with_trai
 import right_of_way_logic.heuristic_strategies.dcp.dcp_step_method as dcp
 import right_of_way_logic.heuristic_strategies.first_in_first_out.cross_first_in_first_out as crossFirstInFirstOff
 import right_of_way_logic.heuristic_strategies.fisrt_come_first_served.first_come_first_served_strict as fcfs
+from sumo_utils import * # noqa
 import trafic_light_logic.traficLight.sumo_dqn_trafic_light as sumo_dqn_light
 import trafic_light_logic.traficLight.sumo_dqn_with_trained_model_trafic_light as sumo_trained_light
 from tools import statistics
 from trafic_light_logic.trafic_light_optimal_cycle import trafic_light_optimal_cycle as tf_cycle_opti
 
-import sumo_utils # noqa
-
-"""Class environment .
-
-This class is used to launch a  simulation with the wished configuration.
-
-Parameters
-----------
-mode : int
-    mode 1, 2 or 3 
-display : bool
-    boolean which indicate if the simulation should be displayed.
-training : bool
-    boolean which indicate if we want to launch a reinforcement learning.
-simulationTime : int 
-    indicate the wished simulation time per episode in second.
-Returns
--------
-
-
-"""
+TRAFFIC_LIGHTS = 3
+CIM_AI = 2
+CIM_FCFS = 1
 
 
 class Environment:
+    """Class environment .
+
+        This class is used to launch a  simulation with the wished configuration.
+
+        Parameters
+        ----------
+        mode : int
+            mode 1, 2 or 3
+        display : bool
+            boolean which indicate if the simulation should be displayed.
+        training : bool
+            boolean which indicate if we want to launch a reinforcement learning.
+        simulationTime : int
+            indicate the wished simulation time per episode in second.
+        Returns
+        -------
+
+    """
 
     def __init__(self, mode, display, training, simulation_time, image_size,
                  reward_type="nb_vehicle", coef=1, flow1=300, flow2=300, flow3=300, flow4=300):

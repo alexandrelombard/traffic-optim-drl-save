@@ -9,7 +9,7 @@ import sys
 import numpy as np
 from tools import simulation_parameter_tools as simu_tools, statistics
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 
 def start_simulation(display):

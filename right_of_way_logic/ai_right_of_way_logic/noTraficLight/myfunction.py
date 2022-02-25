@@ -3,14 +3,12 @@ from __future__ import print_function
 
 import project
 
-import os
-import sys
 import numpy as np
 import matplotlib.pyplot
 import tensorflow as tf
 from tools import simulation_parameter_tools as simu_tools, statistics
 
-import sumo_utils # noqa
+from sumo_utils import * # noqa
 
 security_matrice = np.load(project.resources_dir + 'variable_ICGV2/security_matrice.npy')
 entry_array = np.load(project.resources_dir + 'variable_ICGV2/entry_array.npy')
