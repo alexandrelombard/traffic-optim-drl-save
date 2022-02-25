@@ -78,16 +78,14 @@ class Environment:
         if self.mode == 1:
             crossFirstInFirstOff.launch_cross_first_in_first_off(self.display, self.simulation_time, self.reward_type,
                                                                  self.flow1, self.flow2, self.flow3, self.flow4)
-
-        if self.mode == 2:
+        elif self.mode == 2:
             if self.training:
                 sumo_dqn_2.deep_learning(self.display, self.simulation_time, self.image_size, self.reward_type,
                                          self.coef, self.flow1, self.flow2, self.flow3, self.flow4)
-
             if not self.training:
                 sumo_dqn_trained_2.launch_model(self.display, self.simulation_time, self.image_size, self.reward_type,
                                                 self.coef, self.flow1, self.flow2, self.flow3, self.flow4)
-        if self.mode == 3:
+        elif self.mode == 3:
             if self.training:
                 sumo_dqn_light.launch_traffic_light_simulation(self.display, self.simulation_time, self.reward_type,
                                                                self.coef, self.flow1, self.flow2, self.flow3,
@@ -96,24 +94,20 @@ class Environment:
                 sumo_trained_light.launch_traffic_light_trained_simulation(self.display, self.simulation_time,
                                                                            self.reward_type, self.coef, self.flow1,
                                                                            self.flow2, self.flow3, self.flow4)
-
-        if self.mode == 4:
+        elif self.mode == 4:
             tf_cycle_opti.launch_optimal_trafic_light_cycle(self.display, self.simulation_time, self.reward_type,
                                                             self.coef, self.flow1, self.flow2, self.flow3, self.flow4)
-
-        if self.mode == 5:
+        elif self.mode == 5:
             if self.training:
                 sumo_dqn_simple.deep_learning(self.display, self.simulation_time, self.reward_type, self.coef,
                                               self.flow1, self.flow2, self.flow3, self.flow4)
             if not self.training:
                 sumo_dqn_trained_simple.launch_model(self.display, self.simulation_time, self.reward_type, self.coef,
                                                      self.flow1, self.flow2, self.flow3, self.flow4)
-
-        if self.mode == 6:
+        elif self.mode == 6:
             fcfs.launch_cross_first_come_first_served(self.display, self.simulation_time, self.reward_type,
                                                       self.flow1, self.flow2, self.flow3, self.flow4)
-
-        if self.mode == 7:
+        elif self.mode == 7:
             if self.training:
                 sumo_ppo_baselines.deep_learning_ppo(self.display, self.simulation_time, self.image_size,
                                                      self.reward_type, self.coef, self.flow1,
@@ -121,18 +115,14 @@ class Environment:
             if not self.training:
                 sumo_ppo_baselines.launch_ppo(self.display, self.simulation_time, self.image_size, self.reward_type,
                                               self.coef, self.flow1, self.flow2, self.flow3, self.flow4)
-
-        if self.mode == 8:
+        elif self.mode == 8:
             acceleration_control_idm.run_simulation(self.display, self.simulation_time)
-
-        if self.mode == 9:
+        elif self.mode == 9:
             dcp.launch_dcp_fcfs(self.display, self.simulation_time, self.reward_type,
                                 self.flow1, self.flow2, self.flow3, self.flow4)
-
-        if self.mode == 10:
+        elif self.mode == 10:
             acceleration_control_idm2.run_simulation(self.display, self.simulation_time)
-
-        if self.mode == 11:
+        elif self.mode == 11:
             if self.training:
                 sac.sac_deep_learning(self.display, self.simulation_time, self.image_size)
             if not self.training:
@@ -249,9 +239,9 @@ class Environment:
         print("Average number of evacuated vehicles: ", list_stat[index][10])
 
 
-instance = Environment(mode=1, display=True, training=True, simulation_time=1000, image_size=50,
-                       reward_type="mix_vehicle_time", coef=10, flow1=500, flow2=500, flow3=500, flow4=500)
-#
-# instance.launch_simulation()
-instance.simulation_benchmark(display=False, nb_episode=6, time_per_episode=1000, reward_type="waiting_time", flow1=100,
-                              flow2=100, flow3=100, flow4=100)
+# instance = Environment(mode=1, display=True, training=True, simulation_time=1000, image_size=50,
+#                        reward_type="mix_vehicle_time", coef=10, flow1=500, flow2=500, flow3=500, flow4=500)
+# #
+# # instance.launch_simulation()
+# instance.simulation_benchmark(display=False, nb_episode=6, time_per_episode=1000, reward_type="waiting_time", flow1=100,
+#                               flow2=100, flow3=100, flow4=100)
