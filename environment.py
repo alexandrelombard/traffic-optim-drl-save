@@ -22,7 +22,7 @@ from sumo_utils import * # noqa
 import traffic_light_logic.traffic_light.sumo_dqn_traffic_light as sumo_dqn_light
 import traffic_light_logic.traffic_light.sumo_dqn_with_trained_model_traffic_light as sumo_trained_light
 from tools import statistics
-from traffic_light_logic.traffic_light_optimal_cycle import trafic_light_optimal_cycle as tf_cycle_opti
+from traffic_light_logic.traffic_light_optimal_cycle import traffic_light_optimal_cycle as tf_cycle_opti
 
 TRAFFIC_LIGHTS = 3
 CIM_AI = 2
