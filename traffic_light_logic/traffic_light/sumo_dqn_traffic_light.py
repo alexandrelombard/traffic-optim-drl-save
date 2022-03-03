@@ -5,7 +5,7 @@ import keras.losses
 import tensorflow as tf
 import numpy as np
 
-import trafic_light_logic.traficLight.myfunction_trafic_light as my_function
+import traffic_light_logic.traffic_light.myfunction_traffic_light as my_function
 
 
 def launch_traffic_light_simulation(display, simulation_time, reward_type, coef, flow1, flow2, flow3, flow4):

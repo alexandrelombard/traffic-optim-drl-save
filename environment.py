@@ -19,10 +19,10 @@ import right_of_way_logic.heuristic_strategies.dcp.dcp_step_method as dcp
 import right_of_way_logic.heuristic_strategies.first_in_first_out.cross_first_in_first_out as crossFirstInFirstOff
 import right_of_way_logic.heuristic_strategies.fisrt_come_first_served.first_come_first_served_strict as fcfs
 from sumo_utils import * # noqa
-import trafic_light_logic.traficLight.sumo_dqn_trafic_light as sumo_dqn_light
-import trafic_light_logic.traficLight.sumo_dqn_with_trained_model_trafic_light as sumo_trained_light
+import traffic_light_logic.traffic_light.sumo_dqn_traffic_light as sumo_dqn_light
+import traffic_light_logic.traffic_light.sumo_dqn_with_trained_model_traffic_light as sumo_trained_light
 from tools import statistics
-from trafic_light_logic.trafic_light_optimal_cycle import trafic_light_optimal_cycle as tf_cycle_opti
+from traffic_light_logic.traffic_light_optimal_cycle import trafic_light_optimal_cycle as tf_cycle_opti
 
 TRAFFIC_LIGHTS = 3
 CIM_AI = 2
