@@ -75,17 +75,17 @@ class Environment:
 
     def launch_simulation(self):
 
-        if self.mode == 1:
+        if self.mode == CIM_FCFS:
             crossFirstInFirstOff.launch_cross_first_in_first_off(self.display, self.simulation_time, self.reward_type,
                                                                  self.flow1, self.flow2, self.flow3, self.flow4)
-        elif self.mode == 2:
+        elif self.mode == CIM_AI:
             if self.training:
                 sumo_dqn_2.deep_learning(self.display, self.simulation_time, self.image_size, self.reward_type,
                                          self.coef, self.flow1, self.flow2, self.flow3, self.flow4)
             if not self.training:
                 sumo_dqn_trained_2.launch_model(self.display, self.simulation_time, self.image_size, self.reward_type,
                                                 self.coef, self.flow1, self.flow2, self.flow3, self.flow4)
-        elif self.mode == 3:
+        elif self.mode == TRAFFIC_LIGHTS:
             if self.training:
                 sumo_dqn_light.launch_traffic_light_simulation(self.display, self.simulation_time, self.reward_type,
                                                                self.coef, self.flow1, self.flow2, self.flow3,

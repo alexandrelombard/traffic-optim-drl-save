@@ -95,7 +95,7 @@ def step_few(action, simulation_time, reward_type, coef):
 
     for i in range(0, 2):
         traci.simulationStep()
-        reward += statistique.reward_calculation(reward_type, coef)
+        reward += statistics.reward_calculation(reward_type, coef)
 
     running_vehicle_id = traci.vehicle.getIDList()
     count_running_vehicle = traci.vehicle.getIDCount()
